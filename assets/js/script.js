@@ -118,3 +118,23 @@ $("#delete-btn").on('click', function (e) {
         $(".task-input").val("")
     }
 })
+
+// Change time block color to match relative time
+$(".hourly-task").each(function() {
+    var time = parseInt($(this).children('input').attr('id').split('-'))
+    var currentTime = moment().hours()
+    console.log(time)
+    if(time < currentTime) {
+        $(this).addClass('past')
+    }
+    else if (time === currentTime) {
+        $(this).removeClass('past')
+        $(this).addClass('present')
+    }
+    else {
+        $(this).removeClass('past')
+        $(this).removeClass('present')
+        $(this).addClass('future')
+    }
+    console.log(currentTime)
+})
